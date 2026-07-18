@@ -5,11 +5,6 @@ merge them into one e-mail and send it using Postfix' sendmail interface to a
 given address.
 
 
-FEATURES
-========
-- list of build in functions
-
-
 SOFTWARE REQUIREMENTS
 =====================
 - Perl 5.40.0 or newer
