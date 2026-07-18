@@ -1,0 +1,69 @@
+WHAT IS collector ?
+==================
+A small helper application to collect all e-mails from a Postfix' Maildir and
+merge them into one e-mail and send it using Postfix' sendmail interface to a
+given address.
+
+
+FEATURES
+========
+- list of build in functions
+
+
+SOFTWARE REQUIREMENTS
+=====================
+- Perl 5.40.0 or newer
+- Email::MIME
+- Test::Pod
+- Sys::Hostname
+- Text::Unidedcode
+- optionally: pp if you want a binary.
+
+
+DOCUMENTATION
+=============
+Usage: $0 \
+  -m \$HOME/mbox \
+  -e example\@external.net \
+  -a \$HOME/mailArchive \
+  -M /usr/bin/mail \
+  -llllllll \
+  --help
+
+  -m | --mbox-directory         - directory where Postfix' Maildir skeleton is
+                                  expected and e-mails are collected from
+  -e | --email-address          - e-mail address to send collected e-mails to
+  -a | --archive-directory      - directory processed e-mails get stored
+  -l | --loglevel               - stackable, defaults to -llll (LOG_WARNING, see
+                                  syslog(3) for details)
+  -s | --sendmail-binary        - optional: set path to Postfix' sendmail
+                                  binary; searches in \$PATH by default
+  -f | --from-address           - optional: set a sender's e-mail address;
+                                  defaults to the currents user's name like from
+                                  whoami(1)
+  -h | --help                   - optional: shows this output
+
+LICENSE
+=======
+It is distributed under the GNU General Public License
+version 3 - see the accompanying file "LICENSE" or
+http://www.gnu.org/licenses/gpl.html for more details.
+
+
+GET SOURCE
+==========
+You find package files on
+https://github.com/DomAsProgrammer/
+
+
+REPORTING BUGS
+==============
+I would be glad to hear positive respone, also you can report
+bugs, errors or proposal to DomAsProgrammer@gmail.com or on
+https://github.com/DomAsProgrammer
+
+
+AUTHORS
+=======
+- Dominik Bernhardt 
+    DomAsProgrammer@gmail.com ; https://github.com/DomAsProgrammer
