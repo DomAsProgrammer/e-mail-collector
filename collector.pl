@@ -37,6 +37,12 @@
 
 =begin VersionHistory
 
+	v1
+	Init
+
+	v2
+	Bugfix: e-mail sizes weren't summarized.
+
 =end VersionHistory
 
 =begin comment
@@ -109,7 +115,7 @@ use Email::MIME;
 
 ### Defaults
 my ($strAppName, $uriAppPath)		= fileparse(realpath($0), qr/\.[^.]+$/);
-my $verAppVersion			= q{1};
+my $verAppVersion			= q{2};
 my $fltMinPerlVersion			= q{5.040000};		# $] but needs to be stringified!
 my $strMinPerlVersion			= q{v5.40.0};		# $^V - nicer to read
 my $pidParent				= $$;
@@ -422,6 +428,7 @@ sub CollectMails {
 			last(lopMailFilter);
 			}
 
+		$intSizeSummary				+= $mxdMail->{intSizeFile};
 		syslog(LOG_DEBUG, q{Reading e-mail file "%s".}, $mxdMail->{uriFile});
 
 		# Read e-mail
@@ -466,7 +473,7 @@ sub CollectMails {
 			}
 
 		if ( $intSizeSummary >= $intSizeNotice ) {
-			syslog(LOG_DEBUG, q{%s}, q{Threshold reached, no more messages are taken in account yet.});
+			syslog(LOG_DEBUG, q{%s}, q{Threshold reached, no more messages are taken into account yet.});
 
 			last(lopMailFilter);
 			}
