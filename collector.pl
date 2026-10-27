@@ -17,8 +17,9 @@
 	L I C E N S E
 
 	DESCRIPTION
-	Backup system basically using rsync and checking via find and du.
-	Copyright (C) 2023  Dominik Bernhardt
+	Collecting e-mails from Postfix maildir and sending to another
+	address.
+	Copyright (C) 2026  Dominik Bernhardt
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -218,23 +219,25 @@ sub Usage {
 Usage: $0 \\
   -m \$HOME/mbox \\
   -e example\@external.net \\
+  -f example\@external.net \\
   -a \$HOME/mailArchive \\
-  -M /usr/bin/mail \\
+  -s /usr/sbin/sendmail \\
   -llllllll \\
   --help
 
-  -m | --mbox-directory         - directory where Postfix' Maildir skeleton is
-                                  expected and e-mails are collected from
-  -e | --email-address          - e-mail address to send collected e-mails to
   -a | --archive-directory      - directory processed e-mails get stored
+  -e | --email-address          - e-mail address to send collected e-mails to
+  -f | --from-address           - optional: set a sender's e-mail address;
+  -h | --help                   - optional: shows this output
   -l | --loglevel               - stackable, defaults to -llll (LOG_WARNING, see
                                   syslog(3) for details)
-  -s | --sendmail-binary        - optional: set path to Postfix' sendmail
-                                  binary; searches in \$PATH by default
-  -f | --from-address           - optional: set a sender's e-mail address;
                                   defaults to the currents user's name like from
                                   whoami(1)
-  -h | --help                   - optional: shows this output
+  -m | --mbox-directory         - directory where Postfix' Maildir skeleton is
+                                  expected and e-mails are collected from
+  -s | --sendmail-binary        - optional: set path to Postfix' sendmail
+                                  binary; searches in \$PATH by default
+
 };
 
 	exit($intCodeReturn);
